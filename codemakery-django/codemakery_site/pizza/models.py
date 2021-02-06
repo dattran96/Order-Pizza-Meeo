@@ -53,8 +53,23 @@ class OrderPizza(models.Model):
         preis = self.pizza.preis * self.amount
         return preis
 
+class CartItem(models.Model):
+    cart = models.ForeignKey('Cart',null=True,blank=True, on_delete=models.CASCADE)
+    product = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    eachItem_Price = models.DecimalField(default=0.00,max_digits=100,decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        try:
+            return str(self.cart.id)
+        except:
+            return self.product.name
+
 class Cart(models.Model):
-    products = models.ManyToManyField(Pizza, null = True, blank = True)
+    #items = models.ManyToManyField(CartItem,null=True,blank=True)
+    #products = models.ManyToManyField(Pizza, null = True, blank = True)
     total = models.DecimalField(max_digits=100,decimal_places=2,default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
 

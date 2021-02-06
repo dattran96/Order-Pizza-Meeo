@@ -3,27 +3,30 @@
 {% block content %}
 
 <div class = 'col-sm-8 col-sm-offset-2'>
+    {% if empty %}
+    <h1 style='text-align:center;'>{{ message }}</h1>
+    {% else %}
+
 <table class='table'>
 <thread>
     <th>Item</th>
     <th>Price</th>
+    <th>Quantity</th>
 </thread>
 
 <tfoot>
 
 </tfoot>
 
-     {% for cart in object_list %}
-        {% for pizza in cart.products.all %}
-        <tr><td>{{ pizza.name }}</td><td>{{ pizza.preis }}</td><td><a href='{% url "cart_update" pizza.id %}'>Remove</a></tr>
+        {% for item in cart.cartitem_set.all %}
+        <tr><td>{{ item.product }}</td><td>{{ item.product.preis }}</td><td>{{ item.quantity }}</td><td><a href='{% url "cart_update" item.product.id %}?quantity=0'>Remove</a></tr>
         {% endfor %}
 
          <tr>
             <td></td>
             <td>Total: {{ cart.total }} </td>
         </tr>
-    {% endfor %}
-
+     {% endif %}
 </table>
 
 

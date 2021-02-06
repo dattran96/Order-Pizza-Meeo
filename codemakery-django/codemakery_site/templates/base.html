@@ -26,11 +26,14 @@
         {% url 'pizza_list' as pizza_list_url %}
         {% url 'about' as about_url %}
         {% url 'order_list' as order_list_url %}
+        {% url 'cart_list' as cart_list_url %}
         <li class="nav-item{% if request.path == home_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'home' %}">Home</a></li>
         <li class="nav-item{% if request.path == post_list_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'post_list' %}">Blog</a></li>
         <li class="nav-item{% if request.path == pizza_list_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'pizza_list' %}">Pizza</a></li>
         <li class="nav-item{% if request.path == order_list_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'order_list' %}">Order</a></li>
         <li class="nav-item{% if request.path == about_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'about' %}">About</a></li>
+        <li class="nav-item{% if request.path == cart_list_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'cart_list' %}">Cart</a></li>
+
       </ul>
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}

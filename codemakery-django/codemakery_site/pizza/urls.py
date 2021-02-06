@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import PizzaCreateView, PizzaDeleteView, PizzaDetailView, PizzaListView, PizzaUpdateView
 from .views import OrderCreateView, OrderDeleteView, OrderDetailView, OrderListView, OrderUpdateView
-from .views import CartView
+from .views import cart_view, update_cart
 
 
 urlpatterns = [
@@ -16,8 +16,8 @@ urlpatterns = [
     path('order/<int:pk>/delete/', OrderDeleteView.as_view(), name='order_delete'),
     path('pizza/order/new/', OrderCreateView.as_view(), name='order_create'),
     path('order/', OrderListView.as_view(), name='order_list'),
-    path('cart/', CartView.as_view(), name='cart_list'),
-    path('cart/<int:pk>/', CartView.update_cart, name='cart_update'),
+    path('cart/', cart_view, name='cart_list'),
+    path('cart/<int:pk>/', update_cart, name='cart_update'),
 ]
 
 
