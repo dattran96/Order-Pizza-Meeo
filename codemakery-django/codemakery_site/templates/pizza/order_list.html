@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Orders{% endblock title %}
+
+{% block header %}
+  {% if user.is_authenticated %}
+    <a style="color: #8da242 "class="action" href="{% url 'order_create' %}">New Order</a><hr>
+  {% endif %}
+{% endblock header %}
+
+{% block content %}
+  {% for order in object_list %}
+    <article class="card">
+      <div class="card-header">
+        <span class="font-weight-bold"><a style="color: #8da242" href="{% url 'order_detail' order.pk %}"> Ordernr {{ order.pk }}</a></span>
+        <span class="text-muted" style="color: #8da242" >by {{ order.customer }} | {{ order.created_at }}</span>
+      </div>
+
+      {% if order.customer == user %}
+        <div class="card-footer text-center text-muted">
+          <a style="color: #8da242" href="{% url 'order_update' order.pk %}">Edit</a> |
+          <a style="color: #8da242" href="{% url 'order_delete' order.pk %}">Delete</a>
+        </div>
+      {% endif %}
+    </article>
+    {% if not forloop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+
+
+{% endblock content %}

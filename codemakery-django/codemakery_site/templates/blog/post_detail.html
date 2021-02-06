@@ -1,0 +1,43 @@
+{%  extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+
+{% block content %}
+  <article>
+    <h2 style="color: #576241">{{ post.title }}</h2>
+    <p style="color: #adbc9f">by {{ post.author }} | {{ post.created_at }}</p>
+    <p style="font-family: Helvetica">{{ post.body }}</p>
+    {% if post.picture %}
+    <img style="width:300px" src={{ post.picture.url}}/>
+    {% endif %}
+    </br>
+    </br>
+
+    <h2 style="color: #8da242">Comments</h2>
+    {% if user.is_authenticated %}
+    <a style="color: #8da242"href="{% url 'post_comment' post.pk %}" >Add Comment</a>
+    </br>
+    {% else %}
+    <a style="color: #8da242" href="{% url 'login'  %}" >Add Comment</a>
+    </br>
+    {% endif %}
+    {% if not post.comments.all %}
+        no comment
+    {% else %}
+        {% for comment in post.comments.all %}
+            <strong>by {{ post.author }} | {{ post.created_at }}</strong>
+            <p>{{ comment.body }}</p>
+        {% endfor %}
+    {% endif %}
+  </article>
+
+
+  {% if post.author == user %}
+    <p>
+      <a style="color: #8da242" href="{% url 'post_update' post.pk %}">Edit</a> |
+      <a style="color: #8da242" href="{% url 'post_delete' post.pk %}">Delete</a>
+    </p>
+  {% endif %}
+  <p>Back to <a style="color: #8da242" href="{% url 'post_list' %}">All Posts</a></p>
+{% endblock content %} 

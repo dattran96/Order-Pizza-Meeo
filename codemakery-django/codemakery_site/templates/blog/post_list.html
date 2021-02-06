@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Posts{% endblock title %}
+
+{% block header %}
+  {% if user.is_authenticated %}
+    <a style="color: #8da242 "class="action" href="{% url 'post_create' %}">New Post</a><hr>
+  {% endif %}
+{% endblock header %}
+
+{% block content %}
+  {% for post in object_list %}
+    <article class="card">
+      <div class="card-header">
+        <span class="font-weight-bold"><a style="color: #8da242" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></span>
+        <span class="text-muted" style="color: #8da242" >by {{ post.author }} | {{ post.created_at }}</span>
+      </div>
+      <div class="card-body">
+        <p class="body" style="font-family: Helvetica">{{ post.body }}</p>
+      </div>
+      <div class="card-body">
+        {% if post.picture %}
+        <img width="200" src={{ post.picture.url}}/>
+        {% endif %}
+      </div>
+      {% if post.author == user %}
+        <div class="card-footer text-center text-muted">
+          <a style="color: #8da242" href="{% url 'post_update' post.pk %}">Edit</a> |
+          <a style="color: #8da242" href="{% url 'post_delete' post.pk %}">Delete</a>
+        </div>
+      {% endif %}
+    </article>
+    {% if not forloop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+
+
+{% endblock content %}

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang ="en">
+<head>
+    <title>{% block title %}Codemakery Blog powered by Ojango{% endblock title %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    <meta name="author" content="Duyen Ha">
+
+   {% block css %}
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+   {% endblock css %}
+</head>
+
+
+<body class="vh-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+         <span class="navbar-toggler-icon"></span>
+    </button>
+    <div style="background-color: #b2c185" class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav">
+        {% url 'home' as home_url %}
+        {% url 'post_list' as post_list_url %}
+        {% url 'pizza_list' as pizza_list_url %}
+        {% url 'about' as about_url %}
+        {% url 'order_list' as order_list_url %}
+        <li class="nav-item{% if request.path == home_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item{% if request.path == post_list_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'post_list' %}">Blog</a></li>
+        <li class="nav-item{% if request.path == pizza_list_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'pizza_list' %}">Pizza</a></li>
+        <li class="nav-item{% if request.path == order_list_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'order_list' %}">Order</a></li>
+        <li class="nav-item{% if request.path == about_url %} active{% endif %}"><a style="color: #ffffff" class="nav-link" href="{% url 'about' %}">About</a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <a style="color: #ffffff" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ user.display_name }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+        {% else %}
+        <li class="nav-item"><a style="color: #ffffff" class="nav-link" href= "{% url 'signup' %}">Register</a></li>
+        <li class="nav-item"><a style="color: #ffffff" class="nav-link" href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
+      </ul>
+    </div>
+</nav>
+<main class ="container h-75">
+    {% block header %}
+    {% endblock header %}
+
+    {% block content %}
+    {% endblock content %}
+
+
+</main>
+
+{% block javascript %}
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+{% endblock javascript %}
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+body{
+    background: url("images/pizzabackground.jpg") no-repeat center center fixed;
+    background-size: cover;
+    padding: 50px;
+}

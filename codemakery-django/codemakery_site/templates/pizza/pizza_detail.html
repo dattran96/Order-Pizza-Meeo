@@ -1,0 +1,27 @@
+{%  extends 'base.html' %}
+
+{% block name %}{{ pizza.name }}{% endblock name %}
+
+
+{% block content %}
+  <article>
+    <h2 style="color: #576241">{{ pizza.name }}</h2>
+    <h2 style="color: #576241"> <a href = '{% url "cart_update" pizza.id %}' class = 'pull-right'> Add to Cart</a> </h2>
+    <p style="color: #adbc9f">{{ pizza.created_at }}</p>
+    <p style="font-family: Helvetica">{{ pizza.zutaten }}</p>
+    <p>{{ pizza.preis }} €/ Stück </p>
+    {% if pizza.picture %}
+    <img style="width:300px" src={{ pizza.picture.url}}/>
+    {% endif %}
+    </br>
+
+  </article>
+    {%if request.user.is_authenticated  and request.user.is_superuser %}
+
+    <p>
+      <a style="color: #8da242" href="{% url 'pizza_update' pizza.pk %}">Edit</a> |
+      <a style="color: #8da242" href="{% url 'pizza_delete' pizza.pk %}">Delete</a>
+    </p>
+    {% endif %}
+  <p>Back to <a style="color: #8da242" href="{% url 'pizza_list' %}">All Pizza</a></p>
+{% endblock content %}

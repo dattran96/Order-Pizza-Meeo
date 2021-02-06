@@ -1,0 +1,30 @@
+{%  extends 'base.html' %}
+
+{% block title %}{{ order.pk }}{% endblock title %}
+
+
+{% block content %}
+  <article>
+    <p style="color: #adbc9f">{{ order.customer }} | {{ order.created_at }}</p>
+
+    </br>
+    </br>
+
+
+        {% for order_pizza in order.orderpizza_set.all %}
+            <strong> {{ order_pizza.pizza.name }} | {{ order_pizza.pizza.preis | floatformat:2 }} /Stück
+
+        {% endfor %}
+
+        <strong>  {{ order.summe | floatformat:2 }}
+  </article>
+
+
+  {% if order.customer == user %}
+    <p>
+      <a style="color: #8da242" href="{% url 'order_update' order.pk %}">Edit</a> |
+      <a style="color: #8da242" href="{% url 'order_delete' order.pk %}">Delete</a>
+    </p>
+  {% endif %}
+  <p>Back to <a style="color: #8da242" href="{% url 'order_list' %}">All Orders</a></p>
+{% endblock content %}

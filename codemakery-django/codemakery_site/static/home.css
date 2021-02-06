@@ -1,0 +1,32 @@
+
+.col-{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 900px;
+}
+.div1{
+    width: 310px;
+    max-height: 500px;
+}
+img{
+    width: 300px;
+}
+h1{
+    font-size: 20px;
+}
+.p1{
+    width: 300px;}
+h2{
+    color: whitesmoke;
+    font-family: "Apple Chancery";
+    font-size: 80px;
+}
+.row{
+    background-color: whitesmoke;
+}
+body{
+    background: url("images/pizzabackground.jpg") no-repeat center center fixed;
+    background-size: cover;
+    padding: 50px;
+}

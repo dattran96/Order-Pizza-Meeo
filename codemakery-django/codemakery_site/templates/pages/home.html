@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<h2 class="text-center" style="color: #576241; font-family: Calibri; font-size: 70px">Entdecke jetzt unser Menü</h2>
+
+<h1 class = "text-center" style="font-family: Helvetica";>Schaue dir unsere lecheren Bestseller an.</h1>
+<div class = "text-center">
+<div class = "column">
+
+<div class = "row:after">
+    <p style="font-family: Helvetica";>TUNA<br>
+    Saftiger Thunfisch,<br>
+    rote Zwiebeln,<br>
+    mit echtem Mozzarella<br>
+    an fruchtiger Tomatensauce.<br>
+    </p>
+<img width="200" src="{% static 'images/Tuna Baked.png' %}">
+</div>
+<div class = "row:after">
+    <p style="font-family: Helvetica";>SALAMI<br>
+    Superleckere Salami,<br>
+    mit echtem Mozzarella<br>
+    an fruchtiger Tomatensauce.<br>
+    </p>
+
+<img width="200" src="{% static 'images/SalamiBaked.png' %}">
+</div>
+</div>
+</div>
+<div class = "text-center">
+<div class = "row:after">
+<div class = "column">
+    <p style="font-family: Helvetica";>MARGHERITA<br>
+    Der Klassiker<br>
+    mit echtem Mozzarella<br>
+    an fruchtiger Tomatensauce.<br>
+    </p>
+<img width="200" src="{% static 'images/Margarita Baked.png' %}">
+</div>
+<div class ="column">
+    <p style="font-family: Helvetica";>VEGGIE DELUXE<br>
+    Zarter Blattspinat,<br>
+    knackiger Mais,<br>
+    frische Tomatenscheiben,<br>
+    mit echtem Mozzarella an<br>
+    fruchtiger Tomatensauce.<br>
+    </p>
+<img width="200" src="{% static 'images/Veggie Deluxe Baked.png' %}">
+</div>
+
+<div class = "text-center">
+<div class = "row:after">
+<div class = "column">
+    <p style="font-family: Helvetica";>SALAMI<br>
+    Superleckere Salami,<br>
+    mit echtem Mozzarella<br>
+    an fruchtiger Tomatensauce.<br>
+    </p>
+
+<img width="200" src="{% static 'images/SalamiBaked.png' %}">
+</div>
+<div class = "column">
+    <p style="font-family: Helvetica";>PEPPERONI LOVER'S<br>
+    Herzhafte Peperoniwurst<br>
+    aus Rindfleisch<br>
+    mit echtem Mozzarella<br>
+    an fruchtiger Tomatensauce.<br>
+    </p>
+
+<img width="200" src="{% static 'images/Pepperoni Lovers Baked.png' %}">
+</div>
+</div>
+</div>
+
+<p style="color: #626e49; font-family: 'Liberation Sans'; font-size: 25px">Duyen :-)</p>
+<p style="font-family: Garamond;">This work, "codemakery-django", is a derivative of "HTML & CSS Tutorial" by <a href="https://code.makery.ch/about/">Marco Jakob</a>, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+"codemakery-django" is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by Duyen Ha.</p>
+{% endblock content %}
